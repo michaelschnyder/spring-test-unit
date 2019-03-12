@@ -52,18 +52,6 @@ public class MangaControllerIntegrationTest {
     }
 
     @Test
-    public void testSearchASync() throws Exception {
-        MvcResult result = mockMvc.perform(get("/manga/async/ken").contentType(MediaType.APPLICATION_JSON))
-            .andDo(print())
-            .andExpect(request().asyncStarted())
-            .andDo(print())
-            .andReturn();
-
-        mockMvc.perform(asyncDispatch(result))
-            .andDo(print())
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.*.title", hasItem(is("Hokuto no Ken"))));
-
     }
 
 

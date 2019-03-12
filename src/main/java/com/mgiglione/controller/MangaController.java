@@ -36,4 +36,10 @@ public class MangaController {
         return mangaService.getMangasByTitle(title);
     }
 
+//
+//    @RequestMapping(value = "/async/{title}", method = RequestMethod.GET)
+//    @Async
+//    public CompletableFuture<List<Manga>> searchASync(@PathVariable(name = "title") String title) {
+//        return CompletableFuture.completedFuture(mangaService.getMangasByTitle(title));
+//    }
 }
