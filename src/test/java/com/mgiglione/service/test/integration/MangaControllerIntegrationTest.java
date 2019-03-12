@@ -45,15 +45,16 @@ public class MangaControllerIntegrationTest {
     }
 
     @Test
-    public void testSearchSync() throws Exception {
-        mockMvc.perform(get("/manga/sync/ken").contentType(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.*.title", hasItem(is("Hokuto no Ken"))));
+    public void findManagaByTitle_withKen_findingResult() throws Exception {
+        mockMvc.perform(get("/manga/?title=ken").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.*.title", hasItem(is("Hokuto no Ken"))));
     }
 
     @Test
+    public void findManagaById_unknownId_return404() throws Exception {
+        mockMvc.perform(get("/manga/12345").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
     }
-
-
 
 }

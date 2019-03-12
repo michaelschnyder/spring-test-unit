@@ -19,10 +19,14 @@ public class MangaService {
 
     @Autowired
     RestTemplate restTemplate;
-    
-    
+
+
     public List<Manga> getMangasByTitle(String title) {
         return restTemplate.getForEntity(MANGA_SEARCH_URL+title, MangaResult.class).getBody().getResult();
+    }
+
+    public Manga getMangaById(long id) throws MangaNotFoundExcepction {
+        throw new MangaNotFoundExcepction();
     }
 
 }
